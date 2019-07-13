@@ -1,0 +1,26 @@
+{
+  "name": "pokemon-rpg",
+  "version": "1.0.0",
+  "description": "pokemon game",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "pokedex": "^1.1.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimSpiegel04/pokemon-rpg.git"
+  },
+  "author": "Kim Spiegel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimSpiegel04/pokemon-rpg/issues"
+  },
+  "homepage": "https://github.com/kimSpiegel04/pokemon-rpg#readme"
+}
