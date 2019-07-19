@@ -1,2 +1,50 @@
-<h1>Charmander</h1>
-<img src="<%=pokemon.charmander.animatedImage%>" alt='' width='100px'/>
+<%- include partials/header -%>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-me-4'>
+                <div class="card" style="width: 18rem; height: 30rem;">
+                <img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon">
+                <div class="card-body">
+                    <h5 class="card-title"><%= user[0].name %></h5>
+                    <p class="card-text">HP: <%=user[0].HP%><br>Attack: <%=user[0].attack%> Defense: <%=user[0].defense%></p>
+                    <a href="#" class="btn btn-danger">Fight!</a>
+                </div>
+                </div>
+                <div class='row'>
+                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                </div>
+            </div>
+
+            <div class='col-md-1'></div>
+
+            <div class='col-me-2'>
+                <div class="card">
+                    <div class="card-body">
+                        This is some text within a card body.
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-1'></div>
+
+            <div class='col-me-4'>
+                <div class="card" style="width: 18rem; height: 30rem;">
+                <img src="<%=computer[0].animatedImage %>" class="card-img-top" alt="pokemon">
+                <div class="card-body">
+                    <h5 class="card-title"><%= computer[0].name %></h5>
+                    <p class="card-text">HP: <%=computer[0].HP%><br>Attack: <%=computer[0].attack%> Defense: <%=computer[0].defense%></p>
+                    
+                </div>
+                </div>
+                <div class='row'>
+                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<%- include partials/footer -%>

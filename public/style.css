@@ -1,0 +1,23 @@
+.jumbotron-fluid{
+    background-image: url('https://i.imgur.com/mKF3537.jpg'); 
+    background-size: 100% 150%;
+    color: black;
+    font-weight: bolder;
+}
+
+.user-img{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.container{
+    margin-bottom: 40px;
+}
+
+.pokeball{
+    margin: 10px;
+}
