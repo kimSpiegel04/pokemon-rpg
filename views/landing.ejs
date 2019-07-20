@@ -6,14 +6,15 @@
                 <div class="card" style="width: 18rem; height: 30rem;">
                 <img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon">
                 <div class="card-body">
-                    <h5 class="card-title"><%= user[0].name %></h5>
-                    <p class="card-text">HP: <%=user[0].HP%><br>Attack: <%=user[0].attack%> Defense: <%=user[0].defense%></p>
+                    <h5 class="card-title"><span class='user-name'><%= user[0].name %></h5>
+                    <p class="card-text">HP: <span class='user-HP'><%=user[0].HP%></span><br>Attack: <span class='user-attack'><%=user[0].attack%></span> Defense: <span class='user-def'><%=user[0].defense%></span></p>
                     <a href="#" class="btn btn-danger">Fight!</a>
                 </div>
                 </div>
-                <div class='row'>
-                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
-                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                <div class='row' id='pokeball-row'>
+                    <% user.forEach(function(pokemon) { %>
+                        <img src="<%= pokemon.pokeball %>" class="pokeball">        
+                    <% }); %>
                 </div>
             </div>
 
@@ -38,9 +39,10 @@
                     
                 </div>
                 </div>
-                <div class='row'>
-                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
-                    <img src='http://pngimg.com/uploads/pokeball/pokeball_PNG8.png' class='pokeball' style='width: 40px;'>
+                <div class='row' id='pokeball-comp-row'>
+                    <% computer.forEach(function(pokemon) { %>
+                        <img src="<%= pokemon.pokeball %>" class="pokeball" data-name='<%= pokemon.name %>'>        
+                    <% }); %>
                 </div>
             </div>
 

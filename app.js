@@ -14,6 +14,8 @@ var port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
+var pokeballImg = "http://pngimg.com/uploads/pokeball/pokeball_PNG8.png";
+
 ////////////////USER POKEMON///////////////////////////////
 
 function Pokemon(name,type,level,HP,attack,defense,base_exp,animatedImage,stillImage){
@@ -26,6 +28,7 @@ function Pokemon(name,type,level,HP,attack,defense,base_exp,animatedImage,stillI
     this.base_exp = base_exp;
     this.animatedImage = animatedImage;
     this.stillImage = stillImage;
+    this.pokeball = pokeballImg;
     this.printStats = function(){
         var pokemonData = [
             'Name: ' + this.name,
@@ -41,10 +44,12 @@ function Pokemon(name,type,level,HP,attack,defense,base_exp,animatedImage,stillI
 var userPokemon = [];
 
 for(var i=0; i< userChoice.length; i++){
-    var newPokemon = new Pokemon (userChoice[i].name, userChoice[i].type, Math.floor(Math.random() * 10) + 1,  userChoice[i].hp, userChoice[i].attack, userChoice[i].defense, userChoice[i].base_experience,     pokedex.pokemon(userChoice[i].name.toLowerCase()).sprites.animated, pokedex.pokemon(userChoice[i].name.toLowerCase()).sprites.normal);
+
+    var newPokemon = new Pokemon (userChoice[i].name, userChoice[i].type, Math.floor(Math.random() * 10) + 1,  userChoice[i].hp, userChoice[i].attack, userChoice[i].defense, userChoice[i].base_experience,     pokedex.pokemon(userChoice[i].name.toLowerCase()).sprites.animated, pokedex.pokemon(userChoice[i].name.toLowerCase()).sprites.normal), pokeballImg;
 
     userPokemon.push(newPokemon);
 }
+
 
 ////////////////COMPUTER POKEMON////////////////////////////
 
@@ -56,12 +61,26 @@ for(var i=0; i< computerChoice.length; i++){
     computerPokemon.push(newPokemon);
 }
 
-
 console.log(userPokemon, computerPokemon);
 
 app.get('/',function(req,res){
     res.render('landing', {user:userPokemon,computer:computerPokemon});
 });
+
+// app.post('/', function(req,res){
+//     res.send('POKEMON CHOSEN');
+
+//     var name = req.body.name;
+//     var level = req.body.level;
+//     var HP = req.body.HP;
+//     var attack = req.body.attack;
+//     var defense = req.body.defense;
+//     var image = req.body.image;
+
+//     var chosenPokemon = {name: name, level: level, HP: HP, attack: attack, defense: defense, image: image}
+
+//     res.redirect('/', {chosen:chosenPokemon});
+// });
 
 app.listen(port, function(){
     console.log('Pika pika!');
