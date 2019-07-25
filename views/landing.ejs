@@ -6,14 +6,17 @@
                 <div class="card" style="width: 18rem; height: 30rem;">
                 <img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon">
                 <div class="card-body">
-                    <h5 class="card-title"><span class='user-name'><%= user[0].name %></h5>
-                    <p class="card-text">HP: <span class='user-HP'><%=user[0].HP%></span><br>Attack: <span class='user-attack'><%=user[0].attack%></span> Defense: <span class='user-def'><%=user[0].defense%></span></p>
+                    <h3 class="card-title"><span class='user-name'><%= user[0].name %></h3>
+                    <br>
+                    <h5 class="card-text">HP: <span class='user-HP'><%=user[0].HP%>/<%=user[0].HP%></h5>
+                    <p class='card-text'>Level: <span class='user-level'><%=user[0].level%></p>
+                    <br>
                     <a href="#" class="btn btn-danger">Fight!</a>
                 </div>
                 </div>
                 <div class='row' id='pokeball-row'>
                     <% user.forEach(function(pokemon) { %>
-                        <img src="<%= pokemon.pokeball %>" class="pokeball">        
+                        <img src="<%= pokemon.pokeball %>" class="pokeball pb-user" data-name='<%= pokemon.name %>' onClick='<%= clickHandler %>'>        
                     <% }); %>
                 </div>
             </div>
@@ -23,7 +26,7 @@
             <div class='col-me-2'>
                 <div class="card">
                     <div class="card-body">
-                        This is some text within a card body.
+                        <p id='feedback'>This is some text within a card body.</p>
                     </div>
                 </div>
             </div>
@@ -34,9 +37,10 @@
                 <div class="card" style="width: 18rem; height: 30rem;">
                 <img src="<%=computer[0].animatedImage %>" class="card-img-top" alt="pokemon">
                 <div class="card-body">
-                    <h5 class="card-title"><%= computer[0].name %></h5>
-                    <p class="card-text">HP: <%=computer[0].HP%><br>Attack: <%=computer[0].attack%> Defense: <%=computer[0].defense%></p>
-                    
+                    <h3 class="card-title"><%= computer[0].name %></h3>
+                    <br>
+                    <h5 class="card-text">HP: <span class='user-HP'><%=computer[0].HP%>/<%=computer[0].HP%></h5> 
+                    <p class='card-text'>Level: <span class='user-level'><%=computer[0].level%></p>                   
                 </div>
                 </div>
                 <div class='row' id='pokeball-comp-row'>

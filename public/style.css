@@ -1,3 +1,12 @@
+/* @import '~pokemon-font';
+
+body { 
+    font-size: 10px;
+    font-smooth: never;
+    -webkit-font-smoothing: none; 
+    font-family: 'pokemon-font', monospace;
+}   */
+
 .jumbotron-fluid{
     background-image: url('https://i.imgur.com/mKF3537.jpg'); 
     background-size: 100% 150%;
@@ -23,6 +32,6 @@
     width: 40px;
 }
 
-.pokeball:hover{
+.pb-user:hover{
     cursor: pointer;
 }
