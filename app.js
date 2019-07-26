@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 var pokeballImg = "http://pngimg.com/uploads/pokeball/pokeball_PNG8.png";
 
-////////////////USER POKEMON///////////////////////////////
+////////////////USER POKEMON////onClick='choosePokemon(<%= key %>)'///////////////////////////
 
 function Pokemon(name,type,level,HP,attack,defense,special_attack,special_defense,base_experience,animatedImage,stillImage){
     this.name = name;
@@ -53,16 +53,17 @@ for(var i=0; i< computerChoice.length; i++){
     computerPokemon.push(newPokemon);
 }
 
-function changeColor() {
-    var elem = document.getElementById('scoreboard');
-    elem.style.color = 'blue';
-}
+// function changeText(e) {
+//     e.getElementById("myBtn").addEventListener("click", function(){
+//         document.getElementById("demo").innerHTML = "Hello World";
+//     });
+//     // document.getElementById('fb-text').innerHTML = 'BUTTON CLICKED';
+// }
 
 console.log(userPokemon, computerPokemon);
 
-
 app.get('/',function(req,res){
-    res.render('landing', {user:userPokemon,computer:computerPokemon,clickHandler:changeColor});
+    res.render('landing', {user:userPokemon,computer:computerPokemon});
 });
 
 // app.post('/', function(req,res){

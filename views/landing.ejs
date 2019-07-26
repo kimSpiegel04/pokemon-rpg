@@ -3,20 +3,21 @@
     <div class='container'>
         <div class='row'>
             <div class='col-me-4'>
-                <div class="card" style="width: 18rem; height: 30rem;">
+                <div class="card" id='user-card' style="width: 18rem; height: 30rem;">
                 <img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon">
                 <div class="card-body">
-                    <h3 class="card-title"><span class='user-name'><%= user[0].name %></h3>
+                    <h3 class="card-title"><span id='user-name'><%= user[0].name %></h3>
                     <br>
-                    <h5 class="card-text">HP: <span class='user-HP'><%=user[0].HP%>/<%=user[0].HP%></h5>
+                    <h5 class="card-text">HP: <span id='user-HP'><%=user[0].HP%>/<%=user[0].HP%></h5>
                     <p class='card-text'>Level: <span class='user-level'><%=user[0].level%></p>
                     <br>
-                    <a href="#" class="btn btn-danger">Fight!</a>
+                    <button class="btn btn-danger" id='fight-btn' onClick='clicked()'>Fight!</button>
+
                 </div>
                 </div>
                 <div class='row' id='pokeball-row'>
-                    <% user.forEach(function(pokemon) { %>
-                        <img src="<%= pokemon.pokeball %>" class="pokeball pb-user" data-name='<%= pokemon.name %>' onClick='<%= clickHandler %>'>        
+                    <% user.forEach(function(pokemon,key) { %>
+                        <img src="<%= pokemon.pokeball %>" class="pokeball pb-user" id="<%=key %>" data-name='<%= pokemon.name %>' onClick='choosePokemon(<%=key%>)'>        
                     <% }); %>
                 </div>
             </div>
@@ -26,7 +27,7 @@
             <div class='col-me-2'>
                 <div class="card">
                     <div class="card-body">
-                        <p id='feedback'>This is some text within a card body.</p>
+                        <p id='feedback'>------ <span id='fb-text'>Click fight to change text.</span> ------</p>
                     </div>
                 </div>
             </div>
@@ -44,13 +45,31 @@
                 </div>
                 </div>
                 <div class='row' id='pokeball-comp-row'>
-                    <% computer.forEach(function(pokemon) { %>
-                        <img src="<%= pokemon.pokeball %>" class="pokeball" data-name='<%= pokemon.name %>'>        
+                    <% computer.forEach(function(pokemon, key) { %>
+                        <img src="<%= pokemon.pokeball %>" class="pokeball" id="comp_<%= key %>" data-name='<%= pokemon.name %>'>        
                     <% }); %>
                 </div>
             </div>
 
         </div>
     </div>
+
+<script type="text/javascript">
+
+    //FIGHT BUTTON
+    var clicker = document.getElementById('fight-btn');
+    function clicked(){
+        document.getElementById('fb-text').innerText = 'BUTTON CLICKED';
+    }
+
+    //POKEBALLS
+    function choosePokemon(key){
+        console.log(key);
+        document.getElementById
+    }
+
+    
+</script>
+
 
 <%- include partials/footer -%>
