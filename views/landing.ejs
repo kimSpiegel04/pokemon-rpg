@@ -4,20 +4,21 @@
         <div class='row'>
             <div class='col-me-4'>
                 <div class="card" id='user-card' style="width: 18rem; height: 30rem;">
-                <img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon">
+                <span id='user-pic'><img src="<%=user[0].animatedImage %>" class="card-img-top user-img" alt="pokemon"></span>
                 <div class="card-body">
-                    <h3 class="card-title"><span id='user-name'><%= user[0].name %></h3>
+                    <h3 class="card-title"><span id='user-name'><%= user[0].name %></span></h3>
                     <br>
-                    <h5 class="card-text">HP: <span id='user-HP'><%=user[0].HP%>/<%=user[0].HP%></h5>
-                    <p class='card-text'>Level: <span class='user-level'><%=user[0].level%></p>
+                    <h5 class="card-text">HP: <span id='user-HP-change'><%=user[0].HP%>/<span id='user-HP-still'><%=user[0].HP%></span></h5>
+                    <p class='card-text'>Level: <span class='user-level'><%=user[0].level%></span></p>
                     <br>
                     <button class="btn btn-danger" id='fight-btn' onClick='clicked()'>Fight!</button>
 
                 </div>
                 </div>
                 <div class='row' id='pokeball-row'>
-                    <% user.forEach(function(pokemon,key) { %>
-                        <img src="<%= pokemon.pokeball %>" class="pokeball pb-user" id="<%=key %>" data-name='<%= pokemon.name %>' onClick='choosePokemon(<%=key%>)'>        
+                
+                    <% user.forEach(function(pokemon,image,key) { %>
+                        <img src="<%= pokemon.pokeball %>" class="pokeball pb-user" id="user_<%=key %>" data-name='<%= pokemon.name %>' data-image='<%= pokemon.animatedImage %>' onClick='choosePokemon(<%=pokemon.name%>)'>        
                     <% }); %>
                 </div>
             </div>
@@ -63,10 +64,17 @@
     }
 
     //POKEBALLS
-    function choosePokemon(key){
-        console.log(key);
-        document.getElementById
-    }
+    // function choosePokemon(image){
+        
+    //     document.getElementById('user-pic').text = image;
+    // }
+    // var secPokeball = document.getElementById('1')
+    // $('.used-btn').off("click").on("click",function(){
+    //             var foodItem = $(this).attr('data-name');
+    //             console.log(foodItem);
+    //             var valOfBtn = $('.used-btn[data-name='+foodItem+']').val();
+    //             var num = parseInt(valOfBtn);
+    //             var newAmount=used+num;
 
     
 </script>

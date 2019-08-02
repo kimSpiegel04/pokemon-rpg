@@ -1,3 +1,12 @@
+body {
+    font-size: 15px;
+    -webkit-font-smoothing: none;
+    font-family: 'pokemon-font', monospace;
+}
+h1 {
+    font-size: 40px;
+}
+
 .jumbotron-fluid{
     background-image: url('https://i.imgur.com/mKF3537.jpg'); 
     background-size: 100% 150%;
@@ -12,17 +21,51 @@
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+    height: 290px;
+}
+
+.comp-img{
+    height: 290px;
+}
+
+#user-pic{
+    height: 50%;
+}
+
+#comp-pic{
+    height: 50%;
+}
+
+#card-body{
+    height: 50%;
+}
+
+.card-title{
+    margin-top: 50px;
 }
 
 .container{
     margin-bottom: 40px;
 }
 
-.pokeball{
+.pb-user{
     margin: 10px;
     width: 40px;
 }
 
 .pb-user:hover{
     cursor: pointer;
+}
+
+.pb-comp{
+    margin: 10px;
+    width: 40px;
+}
+
+.base {
+    float: right;
+}
+
+.center-card{
+    padding: 20px;
 }

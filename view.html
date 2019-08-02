@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Battle!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='\style.css'>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4">Pokemon Battle!</h1>
+        <p class="lead">Pick a Pokeball and let the battle begin!</p>
+        </div>
+    </div>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-me-4'>
+                <div class="card" id='user-card' style="width: 18rem; height: 30rem;">
+                    <!-- *gif rendered here -->
+                <span id='user-pic'></span>
+                    <div class="card-body" id='user-body'>
+                        <!-- *name and stats -->                    
+                        <!-- TODO: add fight buttons -->
+
+                    </div>
+                </div>
+                <div class='row' id='pokeball-row'>
+                    <!-- *appended pokeballs -->
+                </div>
+            </div>
+
+            <div class='col-me-2 center-card'>
+                <div class="card">
+                    <div class="card-body">
+                        <p id='feedback'>------ <span id='fb-text'>Click fight to change text.</span> ------</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-me-4'>
+                <div class="card" id='comp-card' style="width: 18rem; height: 30rem;">
+                    <!-- *gif rendered here -->
+                    <span id='comp-pic'></span>
+
+                    <div class="card-body" id= "comp-body">
+                        <!-- *name and stats -->                    
+                        <!-- TODO: add fight buttons -->
+                    </div>
+                </div>
+                <div class='row' id='pokeball-comp-row'>
+                    <!-- *appended pokeballs -->
+                </div>
+            </div> 
+
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+
+        $.get('/api/userPokemon',function(data){
+            for(var i=0; i<data.length; i++){
+                $('#pokeball-row').append('<img src=' + data[i].pokeball + ' class="pb-user" id='+ data[i].name +' data-gif='+ data[i].animatedImage +' data-name='+ data[i].name +' data-type='+ data[i].type +' data-hp='+ data[i].HP +' data-level='+ data[i].level +' data-still='+ data[i].stillImage +' data-attack='+ data[i].attack +' data-defense='+ data[i].defense +' data-special_attack='+ data[i].special_attack +' data-special_defense='+ data[i].special_defense +' data-base_experience='+ data[i].base_experience +'>');
+            };
+
+            $('.pb-user').each(function() {
+                var $this = $(this);
+                $this.on("click", function () {
+                    var gif = $(this).data('gif');
+                    var still = $(this).data('still');
+                    var name = $(this).data('name');
+                    var hp = $(this).data('hp');
+                    var base_hp = $(this).data('hp');
+                    var type = $(this).data('type');
+                    var level = $(this).data('level');
+                    var attack = $(this).data('attack');
+                    var defense = $(this).data('defense');
+                    var special_attack = $(this).data('special_attack');
+                    var special_defense = $(this).data('special_defense');
+                    var base_experience = $(this).data('base_experience');
+
+                    $('#user-pic').html('<img src="'+ gif +'" class="card-img-top user-img" alt="pokemon">');
+
+                    //display lv, hp bar, hp/hp, exp bar
+                    $('#user-body').html(`
+                    <h4 class='card-title'>${name}</h4>
+                    <p>Lv. ${level}</p>
+                    <div class="progress">
+                    <h6>HP </h6><div class="progress-bar bg-success" role="progressbar" style="width: ${(hp/base_hp)*100}%;" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class='base'>${hp}/${base_hp}</p>
+                    <button`);
+                        /**
+                         * TODO: pokedex */
+                        // $('#user-pic').each(function(){
+                        // });
+                });
+            });
+
+        });
+
+
+        $.get('/api/computerPokemon',function(data){
+            for(var i=0; i<data.length; i++){
+                $('#pokeball-comp-row').append('<img src=' + data[i].pokeball + ' class="pb-comp" id='+ data[i].name +' data-gif='+ data[i].animatedImage +' data-name='+ data[i].name +' data-type='+ data[i].type +' data-hp='+ data[i].HP +' data-level='+ data[i].level +' data-still='+ data[i].stillImage +' data-attack='+ data[i].attack +' data-defense='+ data[i].defense +' data-special_attack='+ data[i].special_attack +' data-special_defense='+ data[i].special_defense +' data-base_experience='+ data[i].base_experience +'>');
+            };
+
+            $('.pb-comp').each(function() {
+                var $this = $(this);
+                $this.on("click", function () {
+                    var gif = $(this).data('gif');
+                    var still = $(this).data('still');
+                    var name = $(this).data('name');
+                    var hp = $(this).data('hp');
+                    var base_hp = $(this).data('hp');
+                    var type = $(this).data('type');
+                    var level = $(this).data('level');
+                    var attack = $(this).data('attack');
+                    var defense = $(this).data('defense');
+                    var special_attack = $(this).data('special_attack');
+                    var special_defense = $(this).data('special_defense');
+                    var base_experience = $(this).data('base_experience');
+
+                    $('#comp-pic').html('<img src="'+ gif +'" class="card-img-top comp-img" alt="pokemon">');
+
+                    //display lv, hp bar, hp/hp, exp bar
+                    $('#comp-body').html(`
+                    <h4 class='card-title'>${name}</h4>
+                    <p>Lv. ${level}</p>
+                    <div class="progress">
+                    <h6>HP </h6><div class="progress-bar bg-success" role="progressbar" style="width: ${(hp/base_hp)*100}%;" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class='base'>${hp}/${base_hp}</p>
+                    <button`);
+                    /**
+                     * TODO: pokedex */
+                    // $('#user-pic').each(function(){
+                    // });
+                });
+            });
+
+        });
+        
+    </script>
+
+</body>
+</html>

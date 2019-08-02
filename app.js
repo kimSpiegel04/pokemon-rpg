@@ -66,6 +66,12 @@ app.get('/',function(req,res){
     res.render('landing', {user:userPokemon,computer:computerPokemon});
 });
 
+app.post('/:pokemon', function(req,res){
+    var chosen = req.body;
+    console.log(chosen);
+    res.json(choson);
+});
+
 // app.post('/', function(req,res){
 //     res.send('POKEMON CHOSEN');
 
